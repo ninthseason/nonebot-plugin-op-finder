@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nonebot-plugin-op-finder"
+authors = [
+    {name = "Kl1nge5", email = "ninthseason@qq.com"},
+]
+description = "Nonebot2 plugin. (only for kaheila adaptor)"
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["nonebot2", "kook", "kaiheila", "Genshin Impact"]
+license = {text = "GPL-3.0-only"}
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
+]
+dependencies = [
+    "nonebot2",
+    "nonebot-adapter-kaiheila",
+    "aiohttp",
+]
+dynamic = ["version"]
