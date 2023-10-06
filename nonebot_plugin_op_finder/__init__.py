@@ -7,7 +7,7 @@ from .config import Config
 from .lib import init as lib_init
 from .app import init as app_init
 
-__plugin_meta = PluginMetadata(
+__plugin_meta__ = PluginMetadata(
     name="op-finder",
     description="显示当前正在玩原神的人",
     usage="/查找原批 /op /原批",

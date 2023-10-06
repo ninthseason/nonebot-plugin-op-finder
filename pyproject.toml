@@ -25,3 +25,6 @@ dependencies = [
     "aiohttp",
 ]
 dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = {attr = "nonebot_plugin_op_finder.__version__"}
