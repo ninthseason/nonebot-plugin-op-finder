@@ -3,7 +3,7 @@
 
 # nonebot-plugin-op-finder
 
-_✨ Only for kaiheila adaptor ✨_
+_✨ Only for kaiheila adapter ✨_
 
 <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/ninthseason/nonebot-plugin-op-finder.svg" alt="license">
@@ -62,7 +62,7 @@ _✨ Only for kaiheila adaptor ✨_
 
 ## ⚙️ 配置
 
-kaiheila adaptor 相关配置请见[kaiheila adaptor 使用指南](https://github.com/Tian-que/nonebot-adapter-kaiheila/blob/master/MANUAL.md)
+kaiheila adapter 相关配置请见[kaiheila adapter 使用指南](https://github.com/Tian-que/nonebot-adapter-kaiheila/blob/master/MANUAL.md)
 
 本插件需要在 nonebot2 项目的`.env`文件中添加下表中的配置
 
