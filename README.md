@@ -6,16 +6,16 @@
 
 <div align="center">
 
-# nonebot-plugin-example
+# nonebot-plugin-op-finder
 
 _✨ NoneBot 插件简单描述 ✨_
 
 
 <a href="./LICENSE">
-    <img src="https://img.shields.io/github/license/owner/nonebot-plugin-example.svg" alt="license">
+    <img src="https://img.shields.io/github/license/ninthseason/nonebot-plugin-op-finder.svg" alt="license">
 </a>
-<a href="https://pypi.python.org/pypi/nonebot-plugin-example">
-    <img src="https://img.shields.io/pypi/v/nonebot-plugin-example.svg" alt="pypi">
+<a href="https://pypi.python.org/pypi/nonebot-plugin-op-finder">
+    <img src="https://img.shields.io/pypi/v/nonebot-plugin-op-finder.svg" alt="pypi">
 </a>
 <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="python">
 
@@ -26,7 +26,7 @@ _✨ NoneBot 插件简单描述 ✨_
 模板库使用方法:
 1. 点击仓库中的 "Use this template" 按钮, 输入仓库名与描述, 点击 "  Create repository from template" 创建仓库
 2. 在创建好的新仓库中, 在 "Add file" 菜单中选择 "Create new file", 在新文件名处输入`LICENSE`, 此时在右侧会出现一个 "Choose a license template" 按钮, 点击此按钮选择开源协议模板, 然后在最下方提交新文件到主分支
-3. 全局替换`owner`为仓库所有者ID; 全局替换`nonebot-plugin-example`为插件名; 全局替换`nonebot_plugin_example`为包名; 修改 python 徽标中的版本为你插件的运行所需版本
+3. 全局替换`ninthseason`为仓库所有者ID; 全局替换`nonebot-plugin-op-finder`为插件名; 全局替换`nonebot_plugin_op_finder`为包名; 修改 python 徽标中的版本为你插件的运行所需版本
 4. 修改 README 中的插件名和插件描述, 并在下方填充相应的内容
 
 配置发布工作流:
@@ -47,7 +47,7 @@ _✨ NoneBot 插件简单描述 ✨_
 
 ## 📖 介绍
 
-这里是插件的详细介绍部分
+显示服务器中当前正在玩原神的玩家，效果图见下文。
 
 ## 💿 安装
 
@@ -55,7 +55,7 @@ _✨ NoneBot 插件简单描述 ✨_
 <summary>使用 nb-cli 安装</summary>
 在 nonebot2 项目的根目录下打开命令行, 输入以下指令即可安装
 
-    nb plugin install nonebot-plugin-example
+    nb plugin install nonebot-plugin-op-finder
 
 </details>
 
@@ -66,44 +66,65 @@ _✨ NoneBot 插件简单描述 ✨_
 <details>
 <summary>pip</summary>
 
-    pip install nonebot-plugin-example
+    pip install nonebot-plugin-op-finder
 </details>
 <details>
 <summary>pdm</summary>
 
-    pdm add nonebot-plugin-example
+    pdm add nonebot-plugin-op-finder
 </details>
 <details>
 <summary>poetry</summary>
 
-    poetry add nonebot-plugin-example
+    poetry add nonebot-plugin-op-finder
 </details>
 <details>
 <summary>conda</summary>
 
-    conda install nonebot-plugin-example
+    conda install nonebot-plugin-op-finder
 </details>
 
 打开 nonebot2 项目根目录下的 `pyproject.toml` 文件, 在 `[tool.nonebot]` 部分追加写入
 
-    plugins = ["nonebot_plugin_example"]
+    plugins = ["nonebot_plugin_op_finder"]
 
 </details>
 
 ## ⚙️ 配置
 
-在 nonebot2 项目的`.env`文件中添加下表中的必填配置
+kaiheila adaptor 相关配置请见[kaiheila adaptor 使用指南](https://github.com/Tian-que/nonebot-adapter-kaiheila/blob/master/MANUAL.md)
+
+本插件需要在 nonebot2 项目的`.env`文件中添加下表中的配置
 
 | 配置项 | 必填 | 默认值 | 说明 |
 |:-----:|:----:|:----:|:----:|
-| 配置项1 | 是 | 无 | 配置说明 |
-| 配置项2 | 否 | 无 | 配置说明 |
+| kook_auth_key | 是 | 无 | 自己账号的kook鉴权cookie |
+
+因为目前KOOK v3 api中没有获得玩家在玩状态的接口，本插件通过v2 api获取玩家在玩状态。
+
+由于v2 api不受官方支持，需要手动抓包获取一个账号的鉴权cookie，用以调用api。
+
+1. 登录网页版KOOK，随便进入一个服务器，打开浏览器控制台
+2. 控制台切换到Network(网络)选项卡
+3. KOOK中随意点击一个用户的头像，打开资料面板
+4. 此时Network选项卡中应会抓到若干请求，随意选择一个v2api的请求查看，如 `https://www.kookapp.cn/api/v2/users/<用户id>?guild_id=<服务器id>`
+5. 查看请求的Headers选项卡中的Request Headers(请求头)，找到Cookie键，形如
+   
+   ```
+   Cookie: auth=<kook_auth_key>; PHPSESSID=<something>; _csrf_chuanyu=<something>
+   ```
+
+6. 其中<kook_auth_key>即为我们需要的配置项
+
+> **此实在是不得已而为之的下策，若v3 api有获取在玩状态的方法，或更方便获取v2 api auth key的方法，敬请告知。**
 
 ## 🎉 使用
 ### 指令表
 | 指令 | 权限 | 需要@ | 范围 | 说明 |
 |:-----:|:----:|:----:|:----:|:----:|
-| 指令1 | 主人 | 否 | 私聊 | 指令说明 |
-| 指令2 | 群员 | 是 | 群聊 | 指令说明 |
+| /查找原批 \|\| /原批 \|\| /op | 所有人 | 否 | 群聊 | 触发插件 |
+
+> **指令命名纯属调侃，无恶意**
+
 ### 效果图
 如果有效果图的话
