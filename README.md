@@ -19,6 +19,8 @@ _✨ Only for kaiheila adapter ✨_
 
 显示服务器中当前正在玩原神的玩家，效果图见下文。
 
+**更多游戏支持详见 [morep-finder](https://github.com/ninthseason/nonebot-plugin-morep-finder)**
+
 ## 💿 安装
 
 <details open>
